@@ -1,0 +1,52 @@
+<% include ./partials/header.ejs %>
+
+<div class="wrap">
+    
+    <div class="container">
+        <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+    </div>
+    
+    <header class="head">
+        <h2 class="">
+            Welcome, <%=user.username %> to your Personal Collection of Polls!
+        </h2>
+        <p class="subtext">Atque in Hominum</p>
+        <a href="/new" class="new-btn" type="button">Create Another Poll!</a>
+    </header>
+    
+    <div class="column" id="poll">
+        <header class="sub">
+            <h3>Your Polls</h3>
+        </header>
+        
+        <% if(allPolls.length === 0){ %>
+            <h4 class="befirst">What? No polls??? Start now!</h4>
+       <% }else{ %>
+        <% for(let i = 0; i < allPolls.length; i++){ %>
+        
+            <div class="formbox">
+                
+                <form>
+                        <p> <%=user._id %> </p></P>
+                        <h4 class="legend"><a href="/showpoll/<%=allPolls[i]._id %>"><%=allPolls[i]["title"] %></a></h4>
+                </form>
+                
+            </div> <!-- formbox -->
+        
+       <% } %>
+      <% } %>
+        
+    </div> <!-- poll -->
+    
+</div>
+
+<% include ./partials/footer.ejs %>

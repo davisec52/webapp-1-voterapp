@@ -1,0 +1,28 @@
+<% include ./partials/header %>
+
+<div class="wrap"</div>
+    
+    <div class="container">
+        <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+    </div>
+    
+    <div class="column" id="register-poll">
+        <h1>Reset Your Password, Here!</h1>
+        <p>Enter the email you used to sign up. If we find a match, we'll send you an email with a password reset link.</p>
+        <form class="formbox" id="newpoll" action="/forgot" method="POST">
+            <input class="reset" type="email" name="email" placeholder="email"></input>
+            <input type="submit" class="new-btn" id="post-btn" value="Submit"></input>
+        </form>
+    </div>
+</div>
+
+<% include ./partials/footer %>

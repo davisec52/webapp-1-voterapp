@@ -1,0 +1,40 @@
+<% include ./partials/header %>
+
+<div class="wrap">
+    
+    <div class="container">
+        <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+    </div>
+    
+    <header class="head-poll">
+        <h2 class="">
+            Login Here!
+    </header>
+    
+    <div class="column" id="register-poll">
+        
+        <div class="formbox" id="newpoll">
+            <form action="/login" method=POST id="">
+                <input type="text" name="username" placeholder="Enter username" required></input>
+                <input type="password" name="password" placeholder="Enter password" required></input>
+               
+               <input type="submit" class="new-btn" id="post-btn" value="Submit"></input>
+            </form>
+            <div class="lost">
+                <a type="button"class="forgot-btn" href="/forgot">Forgot Password?</a>
+            </div>
+            
+        </div> <!-- formbox -->
+        
+    </div> <!-- column -->
+
+<% include ./partials/footer %>

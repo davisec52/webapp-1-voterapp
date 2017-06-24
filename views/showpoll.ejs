@@ -1,0 +1,214 @@
+<% include ./partials/header.ejs %>
+
+<div class="wrap">
+    
+    <div class="container">
+        <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+    </div>
+    
+    <header class="head">
+        <h2 class="">
+            The Amazing FCC Vote Cruncher!
+        </h2>
+        <p class="subtext">Atque in Hominum</p>
+    </header>
+    
+    <div class="column" id="show-poll">
+        <header class="sub">
+            <h3>The Polls</h3>
+        </header>
+        
+            <div class="formbox" id="showpoll">
+                <form action="/voteresult/<%=poll._id %>" method=POST>
+                  <h4 class="legend"><%=poll["title"] %></a></h4>
+                  <select size="1" name="select" id="select" class="sel">
+                      
+                      <% for(let i = 0; i < poll["options"].length; i++){ %>
+                      
+                          <option id="itemopt" name="itemopt" class="option"><%=poll["options"][i].value %></option>
+                        <% } %>
+                    
+                  </select>
+                      <button id="submitvote" type="submit" value="submit">Submit Vote</button>
+                      <% if(!user){ %>
+                          <a href="/mustlogin/<%=poll._id %>" id="notLoggedTwitter" name="twitter" type="button" style="display:block"><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;Share - Login</a>
+                     <% }else{ %>
+                          <a href="https://twitter.com/intent/tweet?text=<%=twitterMsg %>" id="twitter" name="twitter" type="" onclick="window.open('https://twitter.com/intent/tweet?text=<%=twitterMsg %>', 'newwindow', 'width=500, height=400'); return false;" style="display:block"><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;Share on Twitter</a>
+                    <% } %>
+                </form>
+                
+               <% if(!user){ %>
+                    <form id="customOpt">
+                        <a href="/login" type="button">Must Be Loggedin - Click Here</a>
+                    </form>
+               <% } else {%>
+                <form action="/custom/<%=poll._id %>" method=POST id="customOpt">
+                    <input id="custom" name="customOpt" type="text" placeholder="custom option"></input>
+                    <button type="submit" value="Add Option">Add Option</button>
+                </form>
+              <%  } %>
+              <br/><br/>
+              <% if(user && poll.author.id.equals(user._id)){ %>
+                    <form id="" action="/showpoll/<%= poll._id %>?_method=DELETE" method="POST">
+                        <button id="submitvote" class="btn btn-danger">Delete Poll</button>
+                    </form>
+                    <% } %>
+            </div> <!-- formbox -->
+      
+    </div> <!-- poll -->
+    
+    <div class="column" id="users">
+        <header class="sub">
+            <h3>Statistics Display</h3>
+        </header>
+        
+        <canvas id="statChart" width="200" height=""></canvas>
+        
+        <div class="userbox">
+            <ul>
+                <p>for dev use</p>
+           <% for(let i = 0; i < poll["options"].length; i++){ %>
+               <% if(poll["options"][i].count >= 0){ %>
+                   <li><%=poll["options"][i].value %> : <%=poll["options"][i].count %></li>
+              <% } %>
+           <% } %>
+            </ul>
+            
+        </div>
+        
+    </div>
+    
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
+<script type="text/javascript">
+    
+    document.addEventListener("DOMContentLoaded", () => {
+        
+    //Labels and data are provided from routes. As template literals, they insert as strings which we then convert to arrays.
+        let labels = `<%=labels %>`;
+        labels = labels.split(",");
+        let data = `<%=data %>`;
+        data = data.split(",");
+        
+    
+        let ctx = document.getElementById("statChart").getContext('2d');
+        let myChart = new Chart(ctx, {
+            type: 'pie',  //Change label to "bar" and uncomment options below to get bar graph
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '# of Votes',
+                     data: data,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255,0,0,0.2)',
+                        'rgba(0,255,0,0.2)',
+                        'rgba(0,0,255,0.2)',
+                        'rgba(192,192,192,0.2)',
+                        'rgba(255,255,0,0.2)',
+                        'rgba(255,0,255,0.2)',
+                        'rgba(155, 199, 32, 0.2)',
+                        'rgba(154, 62, 35, 0.2)',
+                        'rgba(205, 106, 56, 0.2)',
+                        'rgba(175, 19, 102, 0.2)',
+                        'rgba(253, 202, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(205,100,50,0.2)',
+                        'rgba(20,155,90,0.2)',
+                        'rgba(200,20,155,0.2)',
+                        'rgba(122,222,102,0.2)',
+                        'rgba(255,255,0,0.2)',
+                        'rgba(255,0,255,0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                   // borderWidth: 1
+                }]
+            }
+           /* options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            } */
+        });
+        
+    });
+    
+//Controls governing visibility of custom user options available only when logged in
+
+    let makeChoice = document.querySelector("select[name='select']").children[0];
+    makeChoice.style.display = "block";
+    
+    let chosen = document.getElementById("customOpt");
+    chosen.style.display = "none";
+    
+    //Add change event to options in dropdown list after document fully loaded
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelector("select[name='select']").onchange = changeOption;
+    }, false);
+    
+    let changeOption = (event) => {
+        
+        if(!event.target.value){
+            console.log("Please select an option.");
+        }else if(event.target.value === "Custom option, please!"){
+            chosen.style.display = "block";
+        }else{
+            chosen.style.display = "none";
+            console.log(chosen);
+        }
+        
+        if(event.target.value){
+            makeChoice.style.display = "none";
+        }else{
+            makeChoice.style.display = "block";
+        }
+        
+    };
+    
+</script>
+
+<% include ./partials/footer.ejs %>

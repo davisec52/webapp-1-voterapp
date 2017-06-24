@@ -1,0 +1,247 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.column {
+   /* float: left; */
+    border: .5px solid transparent;
+    margin-top: 1%;
+    margin-bottom: 100px;
+}
+
+.wrap {
+    margin-bottom: 50px;
+}
+
+.formbox {
+    text-align: center;
+   /* border-bottom: 5px solid blue; */
+    border-top: .5px solid blue;
+}
+
+#showpoll {
+    border: none;
+}
+
+#poll {
+    width: 50%;
+    margin: 0 auto;
+   /* min-height: 100px;*/
+}
+
+#show-poll {
+    float: left;
+    font-size: 20px;
+    width: 50%;
+    min-height: 100px;
+}
+
+#register-poll {
+    float: left;
+    width: 40%;
+    min-height: 100px;
+    margin-left: 30%;
+}
+
+#newpoll {
+    border: none;
+}
+
+.befirst {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Control of form appearing on createpoll.ejs */
+#createform {
+    border: none;
+    width: 100%;
+    margin-left: 65%;
+}
+
+/* Control for select element enclosing poll options */
+#select {
+    min-width: 100px;
+    width: 49%;
+    padding: 7px;
+    margin-bottom: 25px;
+}
+
+/* Controls for buttons to share on twitter and to submit vote choice */
+#submitvote {
+    display: block;
+    font-size: 20px;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    border: 2px solid transparent;
+    border-radius: 7px;
+    padding: 3px;
+}
+
+#twitter {
+    display: block;
+    background-color: #0084b4;
+    font-size: 20px;
+    color: white;
+    width: 50%;
+    margin-top: 5px;
+    margin-left: 25%;
+    margin-right: 25%;
+    border: 2px solid transparent;
+    border-radius: 7px;
+    padding: 3px;
+}
+
+#notLoggedTwitter {
+    display: block;
+    background-color: #0084b4;
+    font-size: 20px;
+    color: white;
+    width: 50%;
+    margin-top: 5px;
+    margin-left: 25%;
+    margin-right: 25%;
+    border: 2px solid transparent;
+    border-radius: 7px;
+    padding: 3px;
+}
+
+a, a:active, a:focus, a:hover {
+    text-decoration: none;
+}
+
+
+/* Controls for input elements */
+input {
+    display: block;
+    font-size: 20px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+input[type=text] {
+    width: 580px;
+    height: 50px;
+    padding: 5px;
+}
+
+input[type=password] {
+    width: 580px;
+    height: 50px;
+    padding: 5px;
+}
+
+input[type=email] {
+    width: 580px;
+    height: 50px;
+    padding: 5px;
+}
+
+/* Controls for the create poll form */
+#polltitle {
+    width: 100%;
+    height: 50px;
+    padding: 5px;
+}
+
+textarea::-webkit-input-placeholder {
+    font-size: 20px;
+}
+
+textarea {
+    width: 100%;
+}
+
+#post-btn {
+    margin-top: 25px;
+    width: 100%;
+}
+
+/* Control for the custom poll option for logged in users */
+#custom {
+    width: 300px;
+    margin-top: 5px;
+}
+
+#users {
+    float: left;
+    width: 25%;
+}
+
+#statChart {
+    margin-left: 15%;
+}
+
+#graph {
+    width: 35%;
+}
+
+/* Controls for app headline content */
+header {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.sub {
+    margin-top: 30px;
+}
+
+.subtext {
+    font-size: 1.2em;
+}
+
+/* Control for create-new-form button */
+.new-btn {
+    padding: 15px;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+/* Control for button if need to reset password */
+.forgot-btn {
+    padding: 10px;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+/* Controls for footer */
+footer{
+  position: fixed;
+  color: #f9f9f9;
+  text-align: center;
+  margin-bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #f9f9f9;
+  overflow: hidden;
+  padding: 1em;
+  bottom: 0; 
+}
+
+.p-foot, .foot, .vert-foot {
+  display: inline-block;
+  font-size: 1.2em;
+  color: #777;
+}
+
+footer p{
+  padding-right: 10px;
+}
+
+.foot .vert-foot{
+  border: left;
+  font-size: 1em;
+  text-decoration: none;
+  color: #777;
+  padding:5px;
+}
+
+.auth-box {
+    float: left;
+    margin-top: 50px;
+    margin-left: 20%;
+}
+

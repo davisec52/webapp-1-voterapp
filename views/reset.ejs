@@ -1,0 +1,28 @@
+<% include ./partials/header.ejs %>
+
+<div class="wrap">
+    
+    <style>
+    .login{
+	width: 70%;
+	display: block;
+	padding: 5px;
+	margin-top: 5px;
+    }
+    </style>
+
+<div class="wrap">
+        <h1>Reset Password Here!</h1>
+    <div class="column" id="register-poll">
+        <div class="formbox" id="newpoll">
+            <form class="login" action="/reset/<%= user.resetPasswordToken %>" method="POST">
+                <input class="login" type="password" name="username" placeholder="New Password">
+                <input class="login" type="password" name="password" placeholder="Confirm Password">
+               <!-- <button id="login-sub" type="submit">Update Password</button> -->
+                <input type="submit" class="new-btn" id="post-btn" value="Submit"></input>
+            </form>
+        </div>
+    </div>
+</div>
+
+<% include ./partials/footer.ejs %>

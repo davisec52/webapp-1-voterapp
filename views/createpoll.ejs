@@ -1,0 +1,51 @@
+<% include ./partials/header.ejs %>
+
+<div class="wrap">
+    
+    <div class="container">
+        <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+    </div>
+    
+    <header class="head-poll">
+        <h2 class="">
+            Create Your Poll Here!
+        </h2>
+    </header>
+    
+    <div class="column" id="show-poll">
+       <!-- <header class="sub">
+            <h3>Add a New Poll</h3>
+        </header> -->
+        
+        <div class="formbox" id="createform">
+            <form action="/post" method=POST id="">
+                <input id="polltitle" type="text" name="formtitle" placeholder="Put poll name here" required></input>
+                <textarea name="formoptions" rows="10" cols="" placeholder="Enter each option on a separate line. Do not use punctuation to separate line items." required></textarea>
+               
+               <input type="submit" class="new-btn" id="post-btn" value="Submit"></input>
+            </form>
+        </div> <!-- formbox -->
+        
+    </div> <!-- column -->
+    
+   <!-- <div class="column" id="users">
+        <header class="sub">
+            <h3>Fellow Poll Creators</h3>
+        </header>
+        
+        <div class="userbox">
+            
+        </div>
+    </div> -->
+</div>
+
+<% include ./partials/footer.ejs %>

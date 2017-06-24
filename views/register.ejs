@@ -1,0 +1,24 @@
+<% include ./partials/header.ejs %>
+
+<div class="wrap">
+    
+    <header class="head-poll">
+        <h2 class="">
+            Register Here!
+    </header>
+    
+    <div class="column" id="register-poll">
+        
+        <div class="formbox" id="newpoll">
+            <form action="/register" method=POST id="">
+                <input type="text" name="username" placeholder="Enter username" required></input>
+                <input type="password" name="password" placeholder="Enter password" required</input>
+                <input type="email" name="email" placeholder="Enter email" required></input>
+               
+               <input type="submit" class="new-btn" id="post-btn" value="Submit"></input>
+            </form>
+        </div> <!-- formbox -->
+        
+    </div> <!-- column -->
+
+<% include ./partials/footer.ejs %>
