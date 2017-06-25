@@ -1,6 +1,6 @@
 {
-    "ClientId": process.env.CLIENT_ID,
-    "ClientSecret": process.env.CLIENT_SECRET,
-    "RefreshToken": process.env.REFRESH_TOKEN,
-    "AccessToken": process.env.ACCESS_TOKEN
+    "ClientId": "process.env.CLIENT_ID",
+    "ClientSecret": "process.env.CLIENT_SECRET",
+    "RefreshToken": "process.env.REFRESH_TOKEN",
+    "AccessToken": "process.env.ACCESS_TOKEN"
 }
