@@ -8,14 +8,14 @@ const mongoose = require("mongoose");
 const async = require("async");
 const sendgrid = require("sendgrid");
 const nodemailer = require("nodemailer");
-//const Poll = require("./app/models/poll");
 const User = require("./app/models/user");
 const flash = require("connect-flash");
 const app = express();
 const indexRoutes = require("./app/routes/index");
 
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/voterapp_v2");
+//mongoose.connect("mongodb://localhost/voterapp_v2");
+mongoose.connect(process.env.DB_URI);
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());

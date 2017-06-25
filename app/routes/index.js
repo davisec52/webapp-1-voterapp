@@ -186,13 +186,9 @@ router.post("/forgot", middleware.checkEmailAddress, (req, res, next) => {
             auth: {
                 type: 'OAuth2',
                 user: 'altrecov@gmail.com',
-                clientId: '394645389947-9tmmuts0vupqh6e1sk2qkm26fbql634v.apps.googleusercontent.com',
                 clientId: Config.ClientId,
-               // clientSecret: 'P4Rw9wgMIfl8nM3FtQEeroPs',
                 clientSecret: Config.ClientSecret,
-               // refreshToken: '1/1iw5MOrp7MiogdnOY-LgoCIT3MztyTvGlder11fMnfI',
                 refreshToken: Config.RefreshToken,
-               // accessToken: 'ya29.GltyBN6d4jhFQEOO0PrXpVR1tKR9tnaCuEX5xfT91IK-jOSCX_vGWPfJihr3ysUOSmDnS2oh_DHvO052LVQrMx7soEsWJwXfaiR_ryvQ80tLWPMtGGBOtm2jydWp',
                 accessToken: Config.AccessToken,
                 expires: 360000
             },
@@ -329,10 +325,10 @@ router.post("/forgot", middleware.checkEmailAddress, (req, res, next) => {
             auth: {
                 type: 'OAuth2',
                 user: 'altrecov@gmail.com',
-                clientId: '394645389947-9tmmuts0vupqh6e1sk2qkm26fbql634v.apps.googleusercontent.com',
-                clientSecret: 'P4Rw9wgMIfl8nM3FtQEeroPs',
-                refreshToken: '1/1iw5MOrp7MiogdnOY-LgoCIT3MztyTvGlder11fMnfI',
-                accessToken: 'ya29.GltyBN6d4jhFQEOO0PrXpVR1tKR9tnaCuEX5xfT91IK-jOSCX_vGWPfJihr3ysUOSmDnS2oh_DHvO052LVQrMx7soEsWJwXfaiR_ryvQ80tLWPMtGGBOtm2jydWp',
+                clientId: Config.ClientId,
+                clientSecret: Config.ClientSecret,
+                refreshToken: Config.RefreshToken,
+                accessToken: Config.AccessToken,
                 expires: 360000
             },
            // logger,
