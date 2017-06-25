@@ -6,7 +6,7 @@ const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const Poll = require("../models/poll");
 const User = require("../models/user");
-const Config = require("../config/config.json")
+//const Config = require("../config/config.json")
 const middleware = require("../controllers/middleware.js");
 
 //Authentication routes
@@ -186,10 +186,14 @@ router.post("/forgot", middleware.checkEmailAddress, (req, res, next) => {
             auth: {
                 type: 'OAuth2',
                 user: 'altrecov@gmail.com',
-                clientId: Config.ClientId,
-                clientSecret: Config.ClientSecret,
-                refreshToken: Config.RefreshToken,
-                accessToken: Config.AccessToken,
+                //clientId: Config.ClientId,
+                clientId: process.env.CLIENT_ID,
+                //clientSecret: Config.ClientSecret,
+                clientSecret: process.env.CLIENT_SECRET,
+                //refreshToken: Config.RefreshToken,
+                refreshToken: process.env.REFRESH_TOKEN,
+                //accessToken: Config.AccessToken,
+                accessToken: process.env.ACCESS_TOKEN,
                 expires: 360000
             },
            // logger,
